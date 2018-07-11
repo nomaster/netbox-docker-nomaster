@@ -13,3 +13,5 @@ COPY gunicorn_config.py /opt/netbox/
 COPY configuration.py /opt/netbox/netbox/netbox
 CMD ["gunicorn", "-c", "/opt/netbox/gunicorn_config.py", "netbox.wsgi"]
 EXPOSE 8001
+COPY entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
