@@ -12,6 +12,8 @@ WORKDIR /opt/netbox/netbox
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["gunicorn", "-c", "/opt/netbox/gunicorn_config.py", "netbox.wsgi"]
 EXPOSE 8001
+VOLUME /opt/netbox/netbox/media
+RUN chown netbox /opt/netbox/netbox/media
 COPY entrypoint.sh /
 COPY gunicorn_config.py /opt/netbox/
 COPY configuration.py /opt/netbox/netbox/netbox
